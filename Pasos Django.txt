@@ -1,0 +1,10 @@
+Pasos para Djago usando Python 3.
+
+Iniciar un proyecto en Django:
+django-admin startproject "Nombre Proyecto"
+
+Poner la base de datos:
+python3 manage.py migrate
+
+Para correr el servidor:
+python3 manage.py runserver
