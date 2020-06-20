@@ -1,0 +1,17 @@
+<html>
+    <body>
+        <h1>Hola mundo en Django (template)</h1>
+        <p>El nombre es: {{nombrePersona}} y el apellido: {{apellidoPersona}} con edad {{edadPersona}}</p>
+        <p>Ahora es: {{fecha.day}} / {{fecha.month}} / {{fecha.year}}</p>
+        <p><b>Temas del curso</b></p>
+        <ul>
+            {% if temas %}
+                {% for elTema in temas %}
+                    <li>{{elTema}}</li>
+                {% endfor %}
+            {% else %}
+                <li>No hay elementos para mostrar</li>
+            {% endif %} 
+        </ul>
+    </body>
+</html>

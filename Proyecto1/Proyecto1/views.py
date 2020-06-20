@@ -1,14 +1,29 @@
 #primero importar el modulo 
 from django.http import HttpResponse
 import datetime
+from django.template import Template, Context
+
+class Persona():
+    def __init__(self, nombre, apellido, edad):
+        self.nombre = nombre
+        self.apellido = apellido
+        self.edad = edad
 
 #Creando una vista en django
 def saludo(request):
-    documento = '''<html>
-                        <body>
-                            <h1>Hola mundo en Django</h1>
-                        </body>
-                    </html>'''
+    #nombre = "Mario"
+    #apellido = "Miranda"
+    P1 = Persona("Mario", "Miranda", 21)
+    temasDelCurso = ["Plantillas", "Modelos", "Formularios", "Vistas", "Despliegue"]
+    fechaActual = datetime.datetime.now()
+
+    documentoExterno = open("Proyecto1/templates/miplantilla.html")
+    plantilla = Template(documentoExterno.read())
+    documentoExterno.close()
+
+    contexto = Context({"nombrePersona" : P1.nombre, "apellidoPersona" : P1.apellido, "edadPersona" : P1.edad,"fecha" : fechaActual, "temas" : temasDelCurso})
+
+    documento = plantilla.render(contexto)
 
     return HttpResponse(documento)
 
